@@ -188,13 +188,44 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSwitchVolumeFrom() {
+    public void shouldSwitchVolume() {
         Radio radio = new Radio();
-        radio.setCurrentStation(8);
-        radio.prev();
+        radio.setCurrentVolume(98);
+        radio.increaseVolume();
 
-        int expected = 7;
-        int actual = radio.getCurrentStation();
+        int expected = 99;
+        int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldSwitchVolumeMoreHundred() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(100);
+        radio.increaseVolume();
+
+        int expected = 100;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void volumeMinusOne() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+
+    }
+    @Test
+    public void shouldSwitchToVolumeOne() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(0);
+        radio.increaseVolume();
+        int expected = 1;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+
     }
 }

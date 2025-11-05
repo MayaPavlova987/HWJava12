@@ -1,11 +1,19 @@
 public class Radio {
     private int currentStation;
-    private int correntVolume;
+    private int currentVolume;
 
 
 
+    public void increaseVolume() {
+        if (currentVolume < 100) {
+            currentVolume = currentVolume + 1;
+        } else {
+            return;
+        }
+    }
 
-        public void next() {
+
+    public void next() {
         if (currentStation != 9) { //если тек станция не равно макс(9), увелич на единицу, иначе переключи на о
             currentStation++;
         } else {
@@ -22,18 +30,18 @@ public class Radio {
         }
     }
 
-    public int getCorrentVolume() {
-        return correntVolume;
+    public int getCurrentVolume() {
+        return currentVolume;
     }
 
-    public void setCorrentVolume(int correntVolume) {
-        if (correntVolume > 100) {
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > 100) {
             return;
         }
-        if (correntVolume < 0) {
+        if (currentVolume < 0) {
             return;
         }
-        this.correntVolume = correntVolume;
+        this.currentVolume = currentVolume;
     }
 
     public int getCurrentStation() {
